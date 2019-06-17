@@ -1,0 +1,11 @@
+# mybatis \u6570\u636E\u6E90
+spring:
+  datasource:
+    username: root
+    password: 1437444656
+    url: jdbc:mysql://localhost:3306/vote?characterEncoding=utf-8
+    type: com.alibaba.druid.pool.DruidDataSource
+
+logging:
+  level:
+    com.vote.mapper: debug

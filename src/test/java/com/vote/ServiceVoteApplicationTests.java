@@ -1,4 +1,4 @@
-package com.vote.servicevote;
+package com.vote;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
