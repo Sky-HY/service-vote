@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vote.mapper.VoteResultMapperCustom">
+
+    <resultMap id="BaseResultMap" type="com.vote.pojo.VoteResult">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="vote_name" property="voteName" jdbcType="VARCHAR"/>
+        <result column="pk_names" property="pkNames" jdbcType="VARCHAR"/>
+        <result column="pk_tickets" property="pkTickets" jdbcType="VARCHAR"/>
+        <result column="start_time" property="startTime" jdbcType="TIMESTAMP"/>
+        <result column="end_time" property="endTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <select id="getCurrentVote" resultMap="BaseResultMap">
+        select * from vote_result order by id desc LIMIT 0,1;
+    </select>
+
+</mapper>

@@ -1,9 +1,9 @@
 package com.vote.service.imp;
 
-import com.vote.mapper.VoteUserMapper;
-import com.vote.pojo.VoteUser;
-import com.vote.pojo.VoteUserExample;
-import com.vote.service.UserService;
+import com.vote.mapper.VoteAdminMapper;
+import com.vote.pojo.VoteAdmin;
+import com.vote.pojo.VoteAdminExample;
+import com.vote.service.AdminService;
 import com.vote.utils.HyResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,20 +11,20 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserServiceImp implements UserService {
+public class AdminServiceImp implements AdminService {
 
     @Autowired
-    private VoteUserMapper userMapper;
+    private VoteAdminMapper adminMapper;
 
     @Override
     public HyResult login(String username, String password) throws Exception {
         // 包装查询条件
-        VoteUserExample example = new VoteUserExample();
-        VoteUserExample.Criteria criteria = example.createCriteria();
-        criteria.andUsernameEqualTo(username);
-        criteria.andPasswordEqualTo(password);
+        VoteAdminExample example = new VoteAdminExample();
+        VoteAdminExample.Criteria criteria = example.createCriteria();
+        criteria.andAdminNameEqualTo(username);
+        criteria.andAdminPwdEqualTo(password);
         // 查询
-        List<VoteUser> voteUsers = userMapper.selectByExample(example);
+        List<VoteAdmin> voteUsers = adminMapper.selectByExample(example);
         if (voteUsers != null && voteUsers.size() > 0) {
             return HyResult.build(200, "登录成功");
         }

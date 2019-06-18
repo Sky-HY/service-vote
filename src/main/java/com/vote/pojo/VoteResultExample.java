@@ -235,323 +235,143 @@ public class VoteResultExample {
             return (Criteria) this;
         }
 
-        public Criteria andPk1NameIsNull() {
-            addCriterion("pk1_name is null");
+        public Criteria andPkNamesIsNull() {
+            addCriterion("pk_names is null");
             return (Criteria) this;
         }
 
-        public Criteria andPk1NameIsNotNull() {
-            addCriterion("pk1_name is not null");
+        public Criteria andPkNamesIsNotNull() {
+            addCriterion("pk_names is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPk1NameEqualTo(String value) {
-            addCriterion("pk1_name =", value, "pk1Name");
+        public Criteria andPkNamesEqualTo(String value) {
+            addCriterion("pk_names =", value, "pkNames");
             return (Criteria) this;
         }
 
-        public Criteria andPk1NameNotEqualTo(String value) {
-            addCriterion("pk1_name <>", value, "pk1Name");
+        public Criteria andPkNamesNotEqualTo(String value) {
+            addCriterion("pk_names <>", value, "pkNames");
             return (Criteria) this;
         }
 
-        public Criteria andPk1NameGreaterThan(String value) {
-            addCriterion("pk1_name >", value, "pk1Name");
+        public Criteria andPkNamesGreaterThan(String value) {
+            addCriterion("pk_names >", value, "pkNames");
             return (Criteria) this;
         }
 
-        public Criteria andPk1NameGreaterThanOrEqualTo(String value) {
-            addCriterion("pk1_name >=", value, "pk1Name");
+        public Criteria andPkNamesGreaterThanOrEqualTo(String value) {
+            addCriterion("pk_names >=", value, "pkNames");
             return (Criteria) this;
         }
 
-        public Criteria andPk1NameLessThan(String value) {
-            addCriterion("pk1_name <", value, "pk1Name");
+        public Criteria andPkNamesLessThan(String value) {
+            addCriterion("pk_names <", value, "pkNames");
             return (Criteria) this;
         }
 
-        public Criteria andPk1NameLessThanOrEqualTo(String value) {
-            addCriterion("pk1_name <=", value, "pk1Name");
+        public Criteria andPkNamesLessThanOrEqualTo(String value) {
+            addCriterion("pk_names <=", value, "pkNames");
             return (Criteria) this;
         }
 
-        public Criteria andPk1NameLike(String value) {
-            addCriterion("pk1_name like", value, "pk1Name");
+        public Criteria andPkNamesLike(String value) {
+            addCriterion("pk_names like", value, "pkNames");
             return (Criteria) this;
         }
 
-        public Criteria andPk1NameNotLike(String value) {
-            addCriterion("pk1_name not like", value, "pk1Name");
+        public Criteria andPkNamesNotLike(String value) {
+            addCriterion("pk_names not like", value, "pkNames");
             return (Criteria) this;
         }
 
-        public Criteria andPk1NameIn(List<String> values) {
-            addCriterion("pk1_name in", values, "pk1Name");
+        public Criteria andPkNamesIn(List<String> values) {
+            addCriterion("pk_names in", values, "pkNames");
             return (Criteria) this;
         }
 
-        public Criteria andPk1NameNotIn(List<String> values) {
-            addCriterion("pk1_name not in", values, "pk1Name");
+        public Criteria andPkNamesNotIn(List<String> values) {
+            addCriterion("pk_names not in", values, "pkNames");
             return (Criteria) this;
         }
 
-        public Criteria andPk1NameBetween(String value1, String value2) {
-            addCriterion("pk1_name between", value1, value2, "pk1Name");
+        public Criteria andPkNamesBetween(String value1, String value2) {
+            addCriterion("pk_names between", value1, value2, "pkNames");
             return (Criteria) this;
         }
 
-        public Criteria andPk1NameNotBetween(String value1, String value2) {
-            addCriterion("pk1_name not between", value1, value2, "pk1Name");
+        public Criteria andPkNamesNotBetween(String value1, String value2) {
+            addCriterion("pk_names not between", value1, value2, "pkNames");
             return (Criteria) this;
         }
 
-        public Criteria andPk2NameIsNull() {
-            addCriterion("pk2_name is null");
+        public Criteria andPkTicketsIsNull() {
+            addCriterion("pk_tickets is null");
             return (Criteria) this;
         }
 
-        public Criteria andPk2NameIsNotNull() {
-            addCriterion("pk2_name is not null");
+        public Criteria andPkTicketsIsNotNull() {
+            addCriterion("pk_tickets is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPk2NameEqualTo(String value) {
-            addCriterion("pk2_name =", value, "pk2Name");
+        public Criteria andPkTicketsEqualTo(String value) {
+            addCriterion("pk_tickets =", value, "pkTickets");
             return (Criteria) this;
         }
 
-        public Criteria andPk2NameNotEqualTo(String value) {
-            addCriterion("pk2_name <>", value, "pk2Name");
+        public Criteria andPkTicketsNotEqualTo(String value) {
+            addCriterion("pk_tickets <>", value, "pkTickets");
             return (Criteria) this;
         }
 
-        public Criteria andPk2NameGreaterThan(String value) {
-            addCriterion("pk2_name >", value, "pk2Name");
+        public Criteria andPkTicketsGreaterThan(String value) {
+            addCriterion("pk_tickets >", value, "pkTickets");
             return (Criteria) this;
         }
 
-        public Criteria andPk2NameGreaterThanOrEqualTo(String value) {
-            addCriterion("pk2_name >=", value, "pk2Name");
+        public Criteria andPkTicketsGreaterThanOrEqualTo(String value) {
+            addCriterion("pk_tickets >=", value, "pkTickets");
             return (Criteria) this;
         }
 
-        public Criteria andPk2NameLessThan(String value) {
-            addCriterion("pk2_name <", value, "pk2Name");
+        public Criteria andPkTicketsLessThan(String value) {
+            addCriterion("pk_tickets <", value, "pkTickets");
             return (Criteria) this;
         }
 
-        public Criteria andPk2NameLessThanOrEqualTo(String value) {
-            addCriterion("pk2_name <=", value, "pk2Name");
+        public Criteria andPkTicketsLessThanOrEqualTo(String value) {
+            addCriterion("pk_tickets <=", value, "pkTickets");
             return (Criteria) this;
         }
 
-        public Criteria andPk2NameLike(String value) {
-            addCriterion("pk2_name like", value, "pk2Name");
+        public Criteria andPkTicketsLike(String value) {
+            addCriterion("pk_tickets like", value, "pkTickets");
             return (Criteria) this;
         }
 
-        public Criteria andPk2NameNotLike(String value) {
-            addCriterion("pk2_name not like", value, "pk2Name");
+        public Criteria andPkTicketsNotLike(String value) {
+            addCriterion("pk_tickets not like", value, "pkTickets");
             return (Criteria) this;
         }
 
-        public Criteria andPk2NameIn(List<String> values) {
-            addCriterion("pk2_name in", values, "pk2Name");
+        public Criteria andPkTicketsIn(List<String> values) {
+            addCriterion("pk_tickets in", values, "pkTickets");
             return (Criteria) this;
         }
 
-        public Criteria andPk2NameNotIn(List<String> values) {
-            addCriterion("pk2_name not in", values, "pk2Name");
+        public Criteria andPkTicketsNotIn(List<String> values) {
+            addCriterion("pk_tickets not in", values, "pkTickets");
             return (Criteria) this;
         }
 
-        public Criteria andPk2NameBetween(String value1, String value2) {
-            addCriterion("pk2_name between", value1, value2, "pk2Name");
+        public Criteria andPkTicketsBetween(String value1, String value2) {
+            addCriterion("pk_tickets between", value1, value2, "pkTickets");
             return (Criteria) this;
         }
 
-        public Criteria andPk2NameNotBetween(String value1, String value2) {
-            addCriterion("pk2_name not between", value1, value2, "pk2Name");
-            return (Criteria) this;
-        }
-
-        public Criteria andPk1TicketIsNull() {
-            addCriterion("pk1_ticket is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andPk1TicketIsNotNull() {
-            addCriterion("pk1_ticket is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andPk1TicketEqualTo(Integer value) {
-            addCriterion("pk1_ticket =", value, "pk1Ticket");
-            return (Criteria) this;
-        }
-
-        public Criteria andPk1TicketNotEqualTo(Integer value) {
-            addCriterion("pk1_ticket <>", value, "pk1Ticket");
-            return (Criteria) this;
-        }
-
-        public Criteria andPk1TicketGreaterThan(Integer value) {
-            addCriterion("pk1_ticket >", value, "pk1Ticket");
-            return (Criteria) this;
-        }
-
-        public Criteria andPk1TicketGreaterThanOrEqualTo(Integer value) {
-            addCriterion("pk1_ticket >=", value, "pk1Ticket");
-            return (Criteria) this;
-        }
-
-        public Criteria andPk1TicketLessThan(Integer value) {
-            addCriterion("pk1_ticket <", value, "pk1Ticket");
-            return (Criteria) this;
-        }
-
-        public Criteria andPk1TicketLessThanOrEqualTo(Integer value) {
-            addCriterion("pk1_ticket <=", value, "pk1Ticket");
-            return (Criteria) this;
-        }
-
-        public Criteria andPk1TicketIn(List<Integer> values) {
-            addCriterion("pk1_ticket in", values, "pk1Ticket");
-            return (Criteria) this;
-        }
-
-        public Criteria andPk1TicketNotIn(List<Integer> values) {
-            addCriterion("pk1_ticket not in", values, "pk1Ticket");
-            return (Criteria) this;
-        }
-
-        public Criteria andPk1TicketBetween(Integer value1, Integer value2) {
-            addCriterion("pk1_ticket between", value1, value2, "pk1Ticket");
-            return (Criteria) this;
-        }
-
-        public Criteria andPk1TicketNotBetween(Integer value1, Integer value2) {
-            addCriterion("pk1_ticket not between", value1, value2, "pk1Ticket");
-            return (Criteria) this;
-        }
-
-        public Criteria andPk2TicketIsNull() {
-            addCriterion("pk2_ticket is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andPk2TicketIsNotNull() {
-            addCriterion("pk2_ticket is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andPk2TicketEqualTo(Integer value) {
-            addCriterion("pk2_ticket =", value, "pk2Ticket");
-            return (Criteria) this;
-        }
-
-        public Criteria andPk2TicketNotEqualTo(Integer value) {
-            addCriterion("pk2_ticket <>", value, "pk2Ticket");
-            return (Criteria) this;
-        }
-
-        public Criteria andPk2TicketGreaterThan(Integer value) {
-            addCriterion("pk2_ticket >", value, "pk2Ticket");
-            return (Criteria) this;
-        }
-
-        public Criteria andPk2TicketGreaterThanOrEqualTo(Integer value) {
-            addCriterion("pk2_ticket >=", value, "pk2Ticket");
-            return (Criteria) this;
-        }
-
-        public Criteria andPk2TicketLessThan(Integer value) {
-            addCriterion("pk2_ticket <", value, "pk2Ticket");
-            return (Criteria) this;
-        }
-
-        public Criteria andPk2TicketLessThanOrEqualTo(Integer value) {
-            addCriterion("pk2_ticket <=", value, "pk2Ticket");
-            return (Criteria) this;
-        }
-
-        public Criteria andPk2TicketIn(List<Integer> values) {
-            addCriterion("pk2_ticket in", values, "pk2Ticket");
-            return (Criteria) this;
-        }
-
-        public Criteria andPk2TicketNotIn(List<Integer> values) {
-            addCriterion("pk2_ticket not in", values, "pk2Ticket");
-            return (Criteria) this;
-        }
-
-        public Criteria andPk2TicketBetween(Integer value1, Integer value2) {
-            addCriterion("pk2_ticket between", value1, value2, "pk2Ticket");
-            return (Criteria) this;
-        }
-
-        public Criteria andPk2TicketNotBetween(Integer value1, Integer value2) {
-            addCriterion("pk2_ticket not between", value1, value2, "pk2Ticket");
-            return (Criteria) this;
-        }
-
-        public Criteria andPkResultIsNull() {
-            addCriterion("pk_result is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andPkResultIsNotNull() {
-            addCriterion("pk_result is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andPkResultEqualTo(Integer value) {
-            addCriterion("pk_result =", value, "pkResult");
-            return (Criteria) this;
-        }
-
-        public Criteria andPkResultNotEqualTo(Integer value) {
-            addCriterion("pk_result <>", value, "pkResult");
-            return (Criteria) this;
-        }
-
-        public Criteria andPkResultGreaterThan(Integer value) {
-            addCriterion("pk_result >", value, "pkResult");
-            return (Criteria) this;
-        }
-
-        public Criteria andPkResultGreaterThanOrEqualTo(Integer value) {
-            addCriterion("pk_result >=", value, "pkResult");
-            return (Criteria) this;
-        }
-
-        public Criteria andPkResultLessThan(Integer value) {
-            addCriterion("pk_result <", value, "pkResult");
-            return (Criteria) this;
-        }
-
-        public Criteria andPkResultLessThanOrEqualTo(Integer value) {
-            addCriterion("pk_result <=", value, "pkResult");
-            return (Criteria) this;
-        }
-
-        public Criteria andPkResultIn(List<Integer> values) {
-            addCriterion("pk_result in", values, "pkResult");
-            return (Criteria) this;
-        }
-
-        public Criteria andPkResultNotIn(List<Integer> values) {
-            addCriterion("pk_result not in", values, "pkResult");
-            return (Criteria) this;
-        }
-
-        public Criteria andPkResultBetween(Integer value1, Integer value2) {
-            addCriterion("pk_result between", value1, value2, "pkResult");
-            return (Criteria) this;
-        }
-
-        public Criteria andPkResultNotBetween(Integer value1, Integer value2) {
-            addCriterion("pk_result not between", value1, value2, "pkResult");
+        public Criteria andPkTicketsNotBetween(String value1, String value2) {
+            addCriterion("pk_tickets not between", value1, value2, "pkTickets");
             return (Criteria) this;
         }
 

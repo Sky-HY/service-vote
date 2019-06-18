@@ -7,15 +7,9 @@ public class VoteResult {
 
     private String voteName;
 
-    private String pk1Name;
+    private String pkNames;
 
-    private String pk2Name;
-
-    private Integer pk1Ticket;
-
-    private Integer pk2Ticket;
-
-    private Integer pkResult;
+    private String pkTickets;
 
     private Date startTime;
 
@@ -37,44 +31,20 @@ public class VoteResult {
         this.voteName = voteName == null ? null : voteName.trim();
     }
 
-    public String getPk1Name() {
-        return pk1Name;
+    public String getPkNames() {
+        return pkNames;
     }
 
-    public void setPk1Name(String pk1Name) {
-        this.pk1Name = pk1Name == null ? null : pk1Name.trim();
+    public void setPkNames(String pkNames) {
+        this.pkNames = pkNames == null ? null : pkNames.trim();
     }
 
-    public String getPk2Name() {
-        return pk2Name;
+    public String getPkTickets() {
+        return pkTickets;
     }
 
-    public void setPk2Name(String pk2Name) {
-        this.pk2Name = pk2Name == null ? null : pk2Name.trim();
-    }
-
-    public Integer getPk1Ticket() {
-        return pk1Ticket;
-    }
-
-    public void setPk1Ticket(Integer pk1Ticket) {
-        this.pk1Ticket = pk1Ticket;
-    }
-
-    public Integer getPk2Ticket() {
-        return pk2Ticket;
-    }
-
-    public void setPk2Ticket(Integer pk2Ticket) {
-        this.pk2Ticket = pk2Ticket;
-    }
-
-    public Integer getPkResult() {
-        return pkResult;
-    }
-
-    public void setPkResult(Integer pkResult) {
-        this.pkResult = pkResult;
+    public void setPkTickets(String pkTickets) {
+        this.pkTickets = pkTickets == null ? null : pkTickets.trim();
     }
 
     public Date getStartTime() {

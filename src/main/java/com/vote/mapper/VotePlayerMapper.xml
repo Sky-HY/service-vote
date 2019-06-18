@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.vote.mapper.VoteResultMapper">
-    <resultMap id="BaseResultMap" type="com.vote.pojo.VoteResult">
+<mapper namespace="com.vote.mapper.VotePlayerMapper">
+    <resultMap id="BaseResultMap" type="com.vote.pojo.VotePlayer">
         <id column="id" property="id" jdbcType="INTEGER"/>
-        <result column="vote_name" property="voteName" jdbcType="VARCHAR"/>
-        <result column="pk_names" property="pkNames" jdbcType="VARCHAR"/>
-        <result column="pk_tickets" property="pkTickets" jdbcType="VARCHAR"/>
-        <result column="start_time" property="startTime" jdbcType="TIMESTAMP"/>
-        <result column="end_time" property="endTime" jdbcType="TIMESTAMP"/>
+        <result column="player_name" property="playerName" jdbcType="VARCHAR"/>
     </resultMap>
     <sql id="Example_Where_Clause">
         <where>
@@ -70,15 +66,15 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, vote_name, pk_names, pk_tickets, start_time, end_time
+    id, player_name
   </sql>
-    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.vote.pojo.VoteResultExample">
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.vote.pojo.VotePlayerExample">
         select
         <if test="distinct">
             distinct
         </if>
         <include refid="Base_Column_List"/>
-        from vote_result
+        from vote_player
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
@@ -89,96 +85,56 @@
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
         <include refid="Base_Column_List"/>
-        from vote_result
+        from vote_player
         where id = #{id,jdbcType=INTEGER}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from vote_result
+    delete from vote_player
     where id = #{id,jdbcType=INTEGER}
   </delete>
-    <delete id="deleteByExample" parameterType="com.vote.pojo.VoteResultExample">
-        delete from vote_result
+    <delete id="deleteByExample" parameterType="com.vote.pojo.VotePlayerExample">
+        delete from vote_player
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="com.vote.pojo.VoteResult">
-    insert into vote_result (id, vote_name, pk_names, 
-      pk_tickets, start_time, end_time
-      )
-    values (#{id,jdbcType=INTEGER}, #{voteName,jdbcType=VARCHAR}, #{pkNames,jdbcType=VARCHAR}, 
-      #{pkTickets,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}
-      )
+    <insert id="insert" parameterType="com.vote.pojo.VotePlayer">
+    insert into vote_player (id, player_name)
+    values (#{id,jdbcType=INTEGER}, #{playerName,jdbcType=VARCHAR})
   </insert>
-    <insert id="insertSelective" parameterType="com.vote.pojo.VoteResult">
-        insert into vote_result
+    <insert id="insertSelective" parameterType="com.vote.pojo.VotePlayer">
+        insert into vote_player
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
                 id,
             </if>
-            <if test="voteName != null">
-                vote_name,
-            </if>
-            <if test="pkNames != null">
-                pk_names,
-            </if>
-            <if test="pkTickets != null">
-                pk_tickets,
-            </if>
-            <if test="startTime != null">
-                start_time,
-            </if>
-            <if test="endTime != null">
-                end_time,
+            <if test="playerName != null">
+                player_name,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
                 #{id,jdbcType=INTEGER},
             </if>
-            <if test="voteName != null">
-                #{voteName,jdbcType=VARCHAR},
-            </if>
-            <if test="pkNames != null">
-                #{pkNames,jdbcType=VARCHAR},
-            </if>
-            <if test="pkTickets != null">
-                #{pkTickets,jdbcType=VARCHAR},
-            </if>
-            <if test="startTime != null">
-                #{startTime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="endTime != null">
-                #{endTime,jdbcType=TIMESTAMP},
+            <if test="playerName != null">
+                #{playerName,jdbcType=VARCHAR},
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="com.vote.pojo.VoteResultExample" resultType="java.lang.Integer">
-        select count(*) from vote_result
+    <select id="countByExample" parameterType="com.vote.pojo.VotePlayerExample" resultType="java.lang.Integer">
+        select count(*) from vote_player
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </select>
     <update id="updateByExampleSelective" parameterType="map">
-        update vote_result
+        update vote_player
         <set>
             <if test="record.id != null">
                 id = #{record.id,jdbcType=INTEGER},
             </if>
-            <if test="record.voteName != null">
-                vote_name = #{record.voteName,jdbcType=VARCHAR},
-            </if>
-            <if test="record.pkNames != null">
-                pk_names = #{record.pkNames,jdbcType=VARCHAR},
-            </if>
-            <if test="record.pkTickets != null">
-                pk_tickets = #{record.pkTickets,jdbcType=VARCHAR},
-            </if>
-            <if test="record.startTime != null">
-                start_time = #{record.startTime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="record.endTime != null">
-                end_time = #{record.endTime,jdbcType=TIMESTAMP},
+            <if test="record.playerName != null">
+                player_name = #{record.playerName,jdbcType=VARCHAR},
             </if>
         </set>
         <if test="_parameter != null">
@@ -186,45 +142,25 @@
         </if>
     </update>
     <update id="updateByExample" parameterType="map">
-        update vote_result
+        update vote_player
         set id = #{record.id,jdbcType=INTEGER},
-        vote_name = #{record.voteName,jdbcType=VARCHAR},
-        pk_names = #{record.pkNames,jdbcType=VARCHAR},
-        pk_tickets = #{record.pkTickets,jdbcType=VARCHAR},
-        start_time = #{record.startTime,jdbcType=TIMESTAMP},
-        end_time = #{record.endTime,jdbcType=TIMESTAMP}
+        player_name = #{record.playerName,jdbcType=VARCHAR}
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
     </update>
-    <update id="updateByPrimaryKeySelective" parameterType="com.vote.pojo.VoteResult">
-        update vote_result
+    <update id="updateByPrimaryKeySelective" parameterType="com.vote.pojo.VotePlayer">
+        update vote_player
         <set>
-            <if test="voteName != null">
-                vote_name = #{voteName,jdbcType=VARCHAR},
-            </if>
-            <if test="pkNames != null">
-                pk_names = #{pkNames,jdbcType=VARCHAR},
-            </if>
-            <if test="pkTickets != null">
-                pk_tickets = #{pkTickets,jdbcType=VARCHAR},
-            </if>
-            <if test="startTime != null">
-                start_time = #{startTime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="endTime != null">
-                end_time = #{endTime,jdbcType=TIMESTAMP},
+            <if test="playerName != null">
+                player_name = #{playerName,jdbcType=VARCHAR},
             </if>
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.vote.pojo.VoteResult">
-    update vote_result
-    set vote_name = #{voteName,jdbcType=VARCHAR},
-      pk_names = #{pkNames,jdbcType=VARCHAR},
-      pk_tickets = #{pkTickets,jdbcType=VARCHAR},
-      start_time = #{startTime,jdbcType=TIMESTAMP},
-      end_time = #{endTime,jdbcType=TIMESTAMP}
+    <update id="updateByPrimaryKey" parameterType="com.vote.pojo.VotePlayer">
+    update vote_player
+    set player_name = #{playerName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

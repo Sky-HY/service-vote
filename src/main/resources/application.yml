@@ -1,4 +1,4 @@
-# mybatis \u6570\u636E\u6E90
+# mybatis
 spring:
   datasource:
     username: root
@@ -9,3 +9,6 @@ spring:
 logging:
   level:
     com.vote.mapper: debug
+
+mybatis:
+  type-aliases-package: com.vote.pojo
