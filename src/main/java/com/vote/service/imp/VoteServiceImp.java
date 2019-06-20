@@ -16,8 +16,6 @@ import java.util.List;
 @Service
 public class VoteServiceImp implements VoteService {
 
-    // @Autowired
-    // private VoteResultMapper resultMapper;
 
     @Autowired
     private VotePlayerMapper playerMapper;
@@ -29,16 +27,14 @@ public class VoteServiceImp implements VoteService {
     private VoteResultMapper resultMapper;
 
     @Override
-    public HyResult getVoteStatus() {
-        VoteResult currentVote = resultMapperCustom.getCurrentVote();
-        if (currentVote != null) {
-            // 创建包装对象
-            VoteResultCustom voteResultCustom = customPlayerInfo(currentVote);
+    public HyResult getVoteAll() {
+        List<VoteResult> currentVote = resultMapper.selectByExample(null);
+        if (currentVote != null && currentVote.size() > 0) {
 
-            return HyResult.ok(voteResultCustom);
+            return HyResult.ok(currentVote);
 
         }
-        return HyResult.build(500, "未知错误");
+        return HyResult.build(400, "没有跟多数据");
     }
 
     // 查询所有投票记录(分页)

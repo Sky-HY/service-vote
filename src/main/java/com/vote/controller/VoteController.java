@@ -14,10 +14,10 @@ public class VoteController {
     private VoteService voteService;
 
     // 暂时不用
-    @GetMapping("/curinfo")
+    @GetMapping("/info")
     @CrossOrigin("http://localhost:63342")
     public HyResult getCurrentVoteInfo() {
-        return voteService.getVoteStatus();
+        return voteService.getVoteAll();
     }
 
     // 获取全部比赛信息，支持分页
