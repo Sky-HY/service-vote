@@ -13,7 +13,7 @@ public class VoteController {
     @Autowired
     private VoteService voteService;
 
-    // 暂时不用
+    //
     @GetMapping("/info")
     @CrossOrigin("http://localhost:63342")
     public HyResult getCurrentVoteInfo() {
@@ -33,7 +33,6 @@ public class VoteController {
     public HyResult getPageVoteUnClose(@RequestParam Integer page, @RequestParam(defaultValue = "3") Integer rows, Integer status) {
         return voteService.getVoteUnClose(page, rows, status);
     }
-
 
     // 插入比赛信息
     @PostMapping("/insert")

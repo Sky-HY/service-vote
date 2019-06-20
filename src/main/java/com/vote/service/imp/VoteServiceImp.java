@@ -11,6 +11,7 @@ import com.vote.utils.HyResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -30,8 +31,13 @@ public class VoteServiceImp implements VoteService {
     public HyResult getVoteAll() {
         List<VoteResult> currentVote = resultMapper.selectByExample(null);
         if (currentVote != null && currentVote.size() > 0) {
+            List<VoteResultCustom> list = new ArrayList<>();
+            for (VoteResult voteResult : currentVote) {
+                VoteResultCustom resultCustom = customPlayerInfo(voteResult);
+                list.add(resultCustom);
+            }
 
-            return HyResult.ok(currentVote);
+            return HyResult.ok(list);
 
         }
         return HyResult.build(400, "没有跟多数据");
