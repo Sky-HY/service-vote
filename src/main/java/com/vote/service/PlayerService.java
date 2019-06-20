@@ -5,7 +5,7 @@ import com.vote.utils.HyResult;
 
 public interface PlayerService {
 
-    HyResult selectPlayer(String name);
+    HyResult selectPlayer(String name,Integer page,Integer rows);
 
     HyResult insertPlayer(VotePlayer votePlayer);
 

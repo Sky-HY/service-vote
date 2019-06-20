@@ -3,7 +3,9 @@ package com.vote.config;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+import com.vote.converter.DateConverter;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -13,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
-public class FastJsonConfiguration implements WebMvcConfigurer {
+public class MyConfiguration implements WebMvcConfigurer {
 
     // 配置fast json消息转换器
     @Override
@@ -39,5 +41,13 @@ public class FastJsonConfiguration implements WebMvcConfigurer {
         converter.setFastJsonConfig(fastJsonConfig);
         // 将消息转换器配置到执行链
         converters.add(converter);
+    }
+
+
+    // 自定义参数绑定
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        DateConverter converter = new DateConverter();
+        registry.addConverter(converter);
     }
 }

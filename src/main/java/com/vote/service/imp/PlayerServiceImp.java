@@ -25,11 +25,18 @@ public class PlayerServiceImp implements PlayerService {
 
     // 模糊查询参赛选手名称
     @Override
-    public HyResult selectPlayer(String name) {
+    public HyResult selectPlayer(String name, Integer page, Integer rows) {
+
+        PageHelper.startPage(page, rows);
         try {
-            VotePlayer votePlayer = playerMapperCustom.selectVotePlayerByNameLike(name);
-            if (votePlayer != null) {
-                return HyResult.ok(votePlayer);
+            List<VotePlayer> votePlayer = playerMapperCustom.selectVotePlayerByNameLike(name);
+            if (votePlayer != null && votePlayer.size() > 0) {
+                PageInfo<VotePlayer> pageInfo = new PageInfo<>(votePlayer);
+                PageResult pageResult = new PageResult();
+                pageResult.setPage(page);
+                pageResult.setCount(pageInfo.getTotal());
+                pageResult.getData().addAll(votePlayer);
+                return HyResult.ok(pageResult);
             }
             return HyResult.build(400, "没有此参赛选手");
 
@@ -72,10 +79,10 @@ public class PlayerServiceImp implements PlayerService {
                 return HyResult.ok(pageResult);
             }
 
-            return HyResult.build(400,"没有更多数据");
+            return HyResult.build(400, "没有更多数据");
         } catch (Exception e) {
             e.printStackTrace();
-            return HyResult.build(500,"服务器发生异常");
+            return HyResult.build(500, "服务器发生异常");
         }
 
     }

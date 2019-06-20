@@ -71,19 +71,72 @@ public class VoteServiceImp implements VoteService {
         return HyResult.build(400, "没有数据了");
     }
 
+
+    /**
+     * 查询的比赛
+     *
+     * @param status 0表示进行中的比赛，1表示结束的比赛
+     */
+    @Override
+    public HyResult getVoteUnClose(Integer page, Integer rows, Integer status) {
+        // 分页
+        PageHelper.startPage(page, rows);
+        VoteResultExample example = new VoteResultExample();
+        VoteResultExample.Criteria criteria = example.createCriteria();
+        criteria.andStatusEqualTo(status);
+        List<VoteResult> voteResults = resultMapper.selectByExample(example);
+
+        if (voteResults != null && voteResults.size() > 0) {
+            PageInfo<VoteResult> pageInfo = new PageInfo<>(voteResults);
+            PageResult pageResult = new PageResult();
+            // 循环比赛记录，查询票数和选手名称
+            for (VoteResult voteResult : voteResults) {
+                VoteResultCustom custom = customPlayerInfo(voteResult);
+                pageResult.getData().add(custom);
+
+            }
+
+            pageResult.setPage(page);
+            pageResult.setCount(pageInfo.getTotal());
+
+            return HyResult.ok(pageResult);
+        }
+        return HyResult.build(400, "没有跟多数据了");
+    }
+
+    /**
+     * 添加比赛信息
+     */
+    @Override
+    public HyResult insertVote(VoteResult voteResult) {
+
+        try {
+            voteResult.setStatus(0);
+            resultMapper.insert(voteResult);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return HyResult.build(500, "服务器发生异常");
+        }
+
+        return HyResult.ok();
+    }
+
     // 获取选手信息
-    private VoteResultCustom customPlayerInfo(VoteResult voteResult){
+    private VoteResultCustom customPlayerInfo(VoteResult voteResult) {
         // 创建包装对象
         VoteResultCustom voteResultCustom = new VoteResultCustom();
         String pkNames = voteResult.getPkNames();
         String pkTickets = voteResult.getPkTickets();
         // 分割选手
         String[] splitPkNames = pkNames.split(",");
-        // 分割分数
-        String[] splitPkTickets = pkTickets.split(",");
-        // 包装分数
-        for (String ticket : splitPkTickets) {
-            voteResultCustom.getPlayerTickets().add(Long.valueOf(ticket));
+        if (pkTickets != null) {
+            // 分割分数
+            String[] splitPkTickets = pkTickets.split(",");
+            // 包装分数
+            for (String ticket : splitPkTickets) {
+                voteResultCustom.getPlayerTickets().add(Long.valueOf(ticket));
+            }
         }
 
         for (String name : splitPkNames) {
