@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.vote.mapper.VotePlayerMapperCustom">
+    <resultMap id="BaseResultMap" type="com.vote.pojo.VotePlayer">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="player_name" property="playerName" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="selectVotePlayerByNameLike" resultMap="BaseResultMap" parameterType="String">
+        select * from vote_player where player_name like "%"#{name}"%"
+    </select>
+
+
+</mapper>

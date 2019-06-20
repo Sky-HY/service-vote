@@ -1,5 +1,7 @@
 package com.vote.pojo;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.util.Date;
 
 public class VoteResult {
@@ -11,9 +13,13 @@ public class VoteResult {
 
     private String pkTickets;
 
+    @JSONField(format="yyyy-MM-dd: HH:mm")
     private Date startTime;
 
+    @JSONField(format="yyyy-MM-dd: HH:mm")
     private Date endTime;
+
+    private Integer status;
 
     public Integer getId() {
         return id;
@@ -61,5 +67,13 @@ public class VoteResult {
 
     public void setEndTime(Date endTime) {
         this.endTime = endTime;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

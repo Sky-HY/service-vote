@@ -26,7 +26,7 @@ public class AdminServiceImp implements AdminService {
         // 查询
         List<VoteAdmin> voteUsers = adminMapper.selectByExample(example);
         if (voteUsers != null && voteUsers.size() > 0) {
-            return HyResult.build(200, "登录成功");
+            return HyResult.build(200, "登录成功",username);
         }
 
         return HyResult.build(400, "用户名或者密码错误");

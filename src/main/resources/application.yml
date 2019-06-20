@@ -12,3 +12,6 @@ logging:
 
 mybatis:
   type-aliases-package: com.vote.pojo
+
+pagehelper:
+  helper-dialect: mysql

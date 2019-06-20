@@ -6,4 +6,6 @@ public interface VoteService {
 
     HyResult getVoteStatus();
 
+    HyResult getVoteResult(Integer page,Integer rows);
+
 }
