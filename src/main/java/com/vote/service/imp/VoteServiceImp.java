@@ -50,7 +50,9 @@ public class VoteServiceImp implements VoteService {
         // 分页
         PageHelper.startPage(page, rows);
         // 查询
-        List<VoteResult> voteResults = resultMapper.selectByExample(null);
+        VoteResultExample example = new VoteResultExample();
+        example.setOrderByClause("id desc");
+        List<VoteResult> voteResults = resultMapper.selectByExample(example);
         // 有数据
         if (voteResults != null && voteResults.size() > 0) {
             // 结果包装对象
@@ -82,27 +84,47 @@ public class VoteServiceImp implements VoteService {
     @Override
     public HyResult getVoteUnClose(Integer page, Integer rows, Integer status) {
         // 分页
-        PageHelper.startPage(page, rows);
+        if (page!=-1){
+            PageHelper.startPage(page, rows);
+            VoteResultExample example = new VoteResultExample();
+            example.setOrderByClause("id desc");
+            VoteResultExample.Criteria criteria = example.createCriteria();
+            criteria.andStatusEqualTo(status);
+            List<VoteResult> voteResults = resultMapper.selectByExample(example);
+
+            if (voteResults != null && voteResults.size() > 0) {
+                PageInfo<VoteResult> pageInfo = new PageInfo<>(voteResults);
+                PageResult pageResult = new PageResult();
+                // 循环比赛记录，查询票数和选手名称
+                for (VoteResult voteResult : voteResults) {
+                    VoteResultCustom custom = customPlayerInfo(voteResult);
+                    pageResult.getData().add(custom);
+
+                }
+                pageResult.setPage(page);
+                pageResult.setCount(pageInfo.getTotal());
+                return HyResult.ok(pageResult);
+            }
+        }
+
+        // 不分页
         VoteResultExample example = new VoteResultExample();
+        example.setOrderByClause("id desc");
         VoteResultExample.Criteria criteria = example.createCriteria();
         criteria.andStatusEqualTo(status);
         List<VoteResult> voteResults = resultMapper.selectByExample(example);
 
         if (voteResults != null && voteResults.size() > 0) {
-            PageInfo<VoteResult> pageInfo = new PageInfo<>(voteResults);
-            PageResult pageResult = new PageResult();
             // 循环比赛记录，查询票数和选手名称
+            List<VoteResultCustom> list= new ArrayList<>();
             for (VoteResult voteResult : voteResults) {
                 VoteResultCustom custom = customPlayerInfo(voteResult);
-                pageResult.getData().add(custom);
-
+                list.add(custom);
             }
-
-            pageResult.setPage(page);
-            pageResult.setCount(pageInfo.getTotal());
-
-            return HyResult.ok(pageResult);
+            return HyResult.ok(list);
         }
+
+
         return HyResult.build(400, "没有跟多数据了");
     }
 

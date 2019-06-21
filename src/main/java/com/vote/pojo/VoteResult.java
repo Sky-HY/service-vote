@@ -13,10 +13,10 @@ public class VoteResult {
 
     private String pkTickets;
 
-    @JSONField(format="yyyy-MM-dd: HH:mm")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date startTime;
 
-    @JSONField(format="yyyy-MM-dd: HH:mm")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date endTime;
 
     private Integer status;

@@ -27,10 +27,16 @@ public class VoteController {
         return voteService.getVoteResult(page, rows);
     }
 
-    // 获取比赛信息(0表示进行中的比赛，1表比赛结束。分页)
+    /**
+     *  获取进行中的比赛，或者已结束的比赛
+     * @param page 页数，如果为-1则表示不分页
+     * @param rows 每页条数，默认3条
+     * @param status 0表进行中的比赛，1表示结束的比赛
+     */
     @GetMapping("/unclose")
     @CrossOrigin("http://localhost:63342")
-    public HyResult getPageVoteUnClose(@RequestParam Integer page, @RequestParam(defaultValue = "3") Integer rows, Integer status) {
+    public HyResult getPageVoteUnClose(@RequestParam Integer page, @RequestParam(defaultValue = "3") Integer rows,
+                                       Integer status) {
         return voteService.getVoteUnClose(page, rows, status);
     }
 
