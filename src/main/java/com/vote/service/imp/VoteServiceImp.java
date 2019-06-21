@@ -124,6 +124,8 @@ public class VoteServiceImp implements VoteService {
         return HyResult.ok();
     }
 
+
+
     // 获取选手信息
     private VoteResultCustom customPlayerInfo(VoteResult voteResult) {
         // 创建包装对象

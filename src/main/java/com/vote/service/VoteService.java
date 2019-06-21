@@ -12,4 +12,6 @@ public interface VoteService {
     HyResult getVoteUnClose(Integer page,Integer rows,Integer status);
 
     HyResult insertVote(VoteResult voteResult);
+
+    // HyResult
 }

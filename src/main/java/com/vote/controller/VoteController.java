@@ -42,4 +42,10 @@ public class VoteController {
     }
 
 
+    // 移动端投票使用
+    @GetMapping("/vote")
+    public HyResult clientVote(Integer playerId){
+        return null;
+    }
+
 }
