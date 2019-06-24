@@ -230,4 +230,17 @@ public class VoteServiceImp implements VoteService {
 
         return HyResult.ok();
     }
+
+    // 根据多个id获取比赛
+    @Override
+    public HyResult getById(String ids) {
+        String[] id = ids.split(",");
+        ArrayList<VoteResultCustom> list = new ArrayList<>();
+        for (String i : id) {
+            VoteResult result = resultMapper.selectByPrimaryKey(Integer.valueOf(i));
+            VoteResultCustom voteResultCustom = customPlayerInfo(result);
+            list.add(voteResultCustom);
+        }
+        return HyResult.ok(list);
+    }
 }

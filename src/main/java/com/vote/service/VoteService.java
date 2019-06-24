@@ -16,4 +16,6 @@ public interface VoteService {
     HyResult votePlayer(Integer voteId, Integer playerId);
 
     HyResult stopVote(Integer voteId);
+
+    HyResult getById(String ids);
 }

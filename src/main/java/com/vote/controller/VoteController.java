@@ -13,7 +13,7 @@ public class VoteController {
     @Autowired
     private VoteService voteService;
 
-    //
+    //获取全部比赛信息
     @GetMapping("/info")
     @CrossOrigin("http://localhost:63342")
     public HyResult getCurrentVoteInfo() {
@@ -62,5 +62,10 @@ public class VoteController {
         return voteService.stopVote(voteId);
     }
 
+    @GetMapping("/getbyids")
+    @CrossOrigin("http://localhost:63342")
+    public HyResult get(String ids) {
+        return voteService.getById(ids);
+    }
 
 }
