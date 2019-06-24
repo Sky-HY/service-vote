@@ -4,11 +4,14 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.vote.converter.DateConverter;
+import com.vote.interceptor.VoteInterceptor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.ArrayList;
@@ -49,5 +52,14 @@ public class MyConfiguration implements WebMvcConfigurer {
     public void addFormatters(FormatterRegistry registry) {
         DateConverter converter = new DateConverter();
         registry.addConverter(converter);
+    }
+
+    @Autowired
+    private VoteInterceptor voteInterceptor;
+
+    // 添加拦截器
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(voteInterceptor).addPathPatterns("/vote/vote");
     }
 }

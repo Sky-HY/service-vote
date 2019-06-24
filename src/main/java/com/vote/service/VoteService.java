@@ -13,5 +13,7 @@ public interface VoteService {
 
     HyResult insertVote(VoteResult voteResult);
 
-    // HyResult
+    HyResult votePlayer(Integer voteId, Integer playerId);
+
+    HyResult stopVote(Integer voteId);
 }

@@ -28,9 +28,10 @@ public class VoteController {
     }
 
     /**
-     *  获取进行中的比赛，或者已结束的比赛
-     * @param page 页数，如果为-1则表示不分页
-     * @param rows 每页条数，默认3条
+     * 获取进行中的比赛，或者已结束的比赛
+     *
+     * @param page   页数，如果为-1则表示不分页
+     * @param rows   每页条数，默认3条
      * @param status 0表进行中的比赛，1表示结束的比赛
      */
     @GetMapping("/unclose")
@@ -50,8 +51,16 @@ public class VoteController {
 
     // 移动端投票使用
     @GetMapping("/vote")
-    public HyResult clientVote(Integer playerId){
-        return null;
+    @CrossOrigin("http://localhost:63342")
+    public HyResult clientVote(Integer voteId, Integer playerId) {
+        return voteService.votePlayer(voteId, playerId);
     }
+
+    @GetMapping("/stop")
+    @CrossOrigin("http://localhost:63342")
+    public HyResult stopVote(Integer voteId) {
+        return voteService.stopVote(voteId);
+    }
+
 
 }

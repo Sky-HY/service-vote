@@ -27,6 +27,7 @@ public class VoteServiceImp implements VoteService {
     @Autowired
     private VoteResultMapper resultMapper;
 
+
     @Override
     public HyResult getVoteAll() {
         List<VoteResult> currentVote = resultMapper.selectByExample(null);
@@ -84,7 +85,7 @@ public class VoteServiceImp implements VoteService {
     @Override
     public HyResult getVoteUnClose(Integer page, Integer rows, Integer status) {
         // 分页
-        if (page!=-1){
+        if (page != -1) {
             PageHelper.startPage(page, rows);
             VoteResultExample example = new VoteResultExample();
             example.setOrderByClause("id desc");
@@ -116,7 +117,7 @@ public class VoteServiceImp implements VoteService {
 
         if (voteResults != null && voteResults.size() > 0) {
             // 循环比赛记录，查询票数和选手名称
-            List<VoteResultCustom> list= new ArrayList<>();
+            List<VoteResultCustom> list = new ArrayList<>();
             for (VoteResult voteResult : voteResults) {
                 VoteResultCustom custom = customPlayerInfo(voteResult);
                 list.add(custom);
@@ -145,7 +146,6 @@ public class VoteServiceImp implements VoteService {
 
         return HyResult.ok();
     }
-
 
 
     // 获取选手信息
@@ -183,5 +183,51 @@ public class VoteServiceImp implements VoteService {
         voteResultCustom.setEndTime(voteResult.getEndTime());
         voteResultCustom.setStatus(voteResult.getStatus());
         return voteResultCustom;
+    }
+
+    // 选手投票
+    @Override
+    public HyResult votePlayer(Integer voteId, Integer playerId) {
+        // 根据id查询比赛
+        VoteResult voteResult = resultMapper.selectByPrimaryKey(voteId);
+        // 获取票数
+        if (voteResult == null) {
+            return HyResult.build(400, "没有该比赛");
+        }
+        String pkTickets = voteResult.getPkTickets();
+        String[] split = pkTickets.split(",");
+        if (playerId >= split.length) {
+            return HyResult.build(400, "没有该选手");
+        }
+        String cur = split[playerId];
+        // 指定的选手票数+1
+        int ticket = Integer.valueOf(cur) + 1;
+        split[playerId] = ticket + "";
+        StringBuilder sb = new StringBuilder();
+        for (String s : split) {
+            sb.append(s).append(",");
+        }
+        sb.deleteCharAt(sb.length() - 1);
+
+        // 插入数据
+        VoteResult curVote = new VoteResult();
+        curVote.setId(voteResult.getId());
+        curVote.setPkTickets(sb.toString());
+        resultMapper.updateByPrimaryKeySelective(curVote);
+
+
+        return HyResult.ok();
+    }
+
+    // 停止比赛
+    @Override
+    public HyResult stopVote(Integer voteId) {
+
+        VoteResult voteResult = new VoteResult();
+        voteResult.setId(voteId);
+        voteResult.setStatus(1);
+        resultMapper.updateByPrimaryKeySelective(voteResult);
+
+        return HyResult.ok();
     }
 }
